@@ -9,22 +9,22 @@ def main(request):
 	return render(request,'index.html',{'team':team,'places':places})
 
 def user_reg(request):
-	if request.method=='POST':
-		name=request.POST.get('name')
-		password=request.POST.get('pass')
-		check_pass=request.POST.get('check_pass')
-		if password==check_pass:
-			user=User(username=name,password=password)
-			user.save()
-			return redirect('login')
-	return render(request,'register.html')
+    if request.method == 'POST':
+        fname = request.POST.get('fname')
+        lname = request.POST.get('lname')
+        email = request.POST.get('email')
+        name = request.POST.get('name')
+        password = request.POST.get('pass')
+        check_pass = request.POST.get('check_pass')
+        if password == check_pass:
+            user = User(first_name=fname, last_name=lname, email=email, username=name, password=password)
+            user.save()
+            return redirect('login')
+    return render(request, 'register.html')
+
 
 def login(request):
 	return render(request,'login.html')
-
-from django.shortcuts import render, redirect
-from .models import Team, Places
-from django.contrib.auth.models import User
 
 def user_login(request):
     if request.method == 'POST':

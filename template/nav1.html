@@ -3,7 +3,7 @@
 	
 	{% if name %}
 	<li><a href="#">About us</a></li>
-	<li class="user">{{name}}<li>
+	<li>{{name}}<li>
 	<li><a href="{% url 'main' %}">Logout</a></li>
     {% else %}
     <li><a href="{% url 'main' %}">About us</a></li>
